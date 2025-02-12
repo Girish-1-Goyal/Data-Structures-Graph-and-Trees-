@@ -1,3 +1,611 @@
+# C++ Programming: Basics to Advanced
+
+This markdown document covers the essential topics of C++ programming, from basic to advanced concepts. Each topic includes definitions, examples, and output for better understanding.
+
+---
+
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Basic Syntax](#basic-syntax)
+3. [Data Types](#data-types)
+4. [Variables and Constants](#variables-and-constants)
+5. [Control Flow](#control-flow)
+   - [if-else Statements](#if-else-statements)
+   - [Switch Case](#switch-case)
+   - [Loops](#loops)
+6. [Functions](#functions)
+7. [Object-Oriented Programming (OOP)](#object-oriented-programming-oop)
+   - [Classes and Objects](#classes-and-objects)
+   - [Inheritance](#inheritance)
+   - [Polymorphism](#polymorphism)
+   - [Encapsulation](#encapsulation)
+   - [Abstraction](#abstraction)
+   - [Operator Overloading](#operator-overloading)
+   - [Friend Functions](#friend-functions)
+   - [Virtual Functions](#virtual-functions)
+8. [Advanced Topics](#advanced-topics)
+   - [Templates](#templates)
+   - [STL (Standard Template Library)](#stl-standard-template-library)
+   - [File Handling](#file-handling)
+   - [Multithreading](#multithreading)
+   - [Lambda Expressions](#lambda-expressions)
+   - [Smart Pointers](#smart-pointers)
+   - [Move Semantics](#move-semantics)
+
+---
+
+## Introduction
+C++ is a general-purpose programming language created by Bjarne Stroustrup. It is widely used for system programming, game development, and competitive programming. C++ supports both procedural and object-oriented programming paradigms.
+
+---
+
+## Basic Syntax
+Every C++ program starts with the `main` function. Here's a simple "Hello, World!" program:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Hello, World!
+```
+
+---
+
+## Data Types
+C++ provides several built-in data types for different purposes.
+
+### Basic Data Types
+- `int`: Integer numbers
+- `float`: Floating-point numbers
+- `double`: Double-precision floating-point numbers
+- `char`: Single character
+- `bool`: Boolean (true or false)
+
+Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int age = 25;
+    float height = 5.9;
+    char grade = 'A';
+    bool isStudent = true;
+
+    cout << "Age: " << age << endl;
+    cout << "Height: " << height << endl;
+    cout << "Grade: " << grade << endl;
+    cout << "Is Student: " << isStudent << endl;
+
+    return 0;
+}
+```
+
+**Output:**
+```
+Age: 25
+Height: 5.9
+Grade: A
+Is Student: 1
+```
+
+---
+
+## Variables and Constants
+
+### Variables
+Variables are used to store data in memory.
+```cpp
+int x = 10; // integer variable
+```
+
+### Constants
+Constants are immutable values defined using `const`.
+```cpp
+const float PI = 3.14159;
+```
+
+---
+
+## Control Flow
+### if-else Statements
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number = 10;
+
+    if (number > 0) {
+        cout << "Number is positive." << endl;
+    } else {
+        cout << "Number is not positive." << endl;
+    }
+
+    return 0;
+}
+```
+
+**Output:**
+```
+Number is positive.
+```
+
+### Switch Case
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int day = 3;
+
+    switch (day) {
+        case 1:
+            cout << "Monday";
+            break;
+        case 2:
+            cout << "Tuesday";
+            break;
+        case 3:
+            cout << "Wednesday";
+            break;
+        default:
+            cout << "Other day";
+    }
+
+    return 0;
+}
+```
+
+**Output:**
+```
+Wednesday
+```
+
+---
+
+## Loops
+
+### For Loop
+```cpp
+for (int i = 0; i < 5; i++) {
+    cout << i << endl;
+}
+```
+
+### While Loop
+```cpp
+int i = 0;
+while (i < 5) {
+    cout << i << endl;
+    i++;
+}
+```
+
+---
+
+## Functions
+Functions allow code reuse and modularity.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int result = add(5, 3);
+    cout << "Sum: " << result << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Sum: 8
+```
+
+---
+
+## Object-Oriented Programming (OOP)
+
+### Classes and Objects
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string brand;
+    int speed;
+
+    void display() {
+        cout << "Brand: " << brand << ", Speed: " << speed << endl;
+    }
+};
+
+int main() {
+    Car car1;
+    car1.brand = "Toyota";
+    car1.speed = 120;
+    car1.display();
+
+    return 0;
+}
+```
+
+**Output:**
+```
+Brand: Toyota, Speed: 120
+```
+
+### Inheritance
+```cpp
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+public:
+    string type;
+};
+
+class Car : public Vehicle {
+public:
+    string brand;
+};
+```
+
+### Polymorphism
+```cpp
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void draw() {
+        cout << "Drawing Shape" << endl;
+    }
+};
+
+class Circle : public Shape {
+public:
+    void draw() override {
+        cout << "Drawing Circle" << endl;
+    }
+};
+
+int main() {
+    Shape *shape;
+    Circle circle;
+    shape = &circle;
+    shape->draw();
+    return 0;
+}
+```
+
+**Output:**
+```
+Drawing Circle
+```
+
+### Encapsulation
+Encapsulation is the bundling of data and methods into a single unit (class).
+```cpp
+#include <iostream>
+using namespace std;
+
+class Employee {
+private:
+    int salary;
+
+public:
+    void setSalary(int s) {
+        salary = s;
+    }
+
+    int getSalary() {
+        return salary;
+    }
+};
+
+int main() {
+    Employee emp;
+    emp.setSalary(50000);
+    cout << "Salary: " << emp.getSalary() << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Salary: 50000
+```
+
+### Abstraction
+```cpp
+#include <iostream>
+using namespace std;
+
+class AbstractClass {
+public:
+    virtual void display() = 0; // Pure virtual function
+};
+
+class ConcreteClass : public AbstractClass {
+public:
+    void display() override {
+        cout << "Implementing Abstract Function" << endl;
+    }
+};
+
+int main() {
+    ConcreteClass obj;
+    obj.display();
+    return 0;
+}
+```
+
+**Output:**
+```
+Implementing Abstract Function
+```
+
+### Operator Overloading
+```cpp
+#include <iostream>
+using namespace std;
+
+class Complex {
+public:
+    int real, imag;
+
+    Complex(int r, int i) : real(r), imag(i) {}
+
+    Complex operator + (const Complex &obj) {
+        return Complex(real + obj.real, imag + obj.imag);
+    }
+
+    void display() {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+int main() {
+    Complex c1(1, 2), c2(3, 4);
+    Complex c3 = c1 + c2;
+    c3.display();
+    return 0;
+}
+```
+
+**Output:**
+```
+4 + 6i
+```
+
+### Friend Functions
+```cpp
+#include <iostream>
+using namespace std;
+
+class Box {
+private:
+    int width;
+
+public:
+    Box(int w) : width(w) {}
+
+    friend void printWidth(Box b);
+};
+
+void printWidth(Box b) {
+    cout << "Width: " << b.width << endl;
+}
+
+int main() {
+    Box box(10);
+    printWidth(box);
+    return 0;
+}
+```
+
+**Output:**
+```
+Width: 10
+```
+
+### Virtual Functions
+```cpp
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void show() {
+        cout << "Base class" << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() override {
+        cout << "Derived class" << endl;
+    }
+};
+
+int main() {
+    Base *basePtr;
+    Derived derivedObj;
+    basePtr = &derivedObj;
+    basePtr->show();
+    return 0;
+}
+```
+
+**Output:**
+```
+Derived class
+```
+
+---
+
+## Advanced Topics
+
+### Templates
+```cpp
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+
+int main() {
+    cout << add(5, 3) << endl;
+    cout << add(5.5, 3.3) << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+8
+8.8
+```
+
+### STL (Standard Template Library)
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> numbers = {1, 2, 3};
+    for (int num : numbers) {
+        cout << num << " ";
+    }
+    return 0;
+}
+```
+
+**Output:**
+```
+1 2 3
+```
+
+### File Handling
+```cpp
+#include <fstream>
+using namespace std;
+
+int main() {
+    ofstream file("example.txt");
+    file << "Hello, File!";
+    file.close();
+
+    ifstream readFile("example.txt");
+    string content;
+    readFile >> content;
+    cout << content << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Hello, File!
+```
+
+### Lambda Expressions
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    auto add = [](int a, int b) { return a + b; };
+    cout << "Sum: " << add(3, 4) << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Sum: 7
+```
+
+### Smart Pointers
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+int main() {
+    unique_ptr<int> ptr = make_unique<int>(10);
+    cout << "Value: " << *ptr << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Value: 10
+```
+
+### Move Semantics
+```cpp
+#include <iostream>
+#include <utility>
+using namespace std;
+
+class MoveExample {
+public:
+    int* data;
+
+    MoveExample(int value) {
+        data = new int(value);
+        cout << "Resource acquired" << endl;
+    }
+
+    MoveExample(MoveExample&& obj) noexcept {
+        data = obj.data;
+        obj.data = nullptr;
+        cout << "Resource moved" << endl;
+    }
+
+    ~MoveExample() {
+        delete data;
+        cout << "Resource destroyed" << endl;
+    }
+};
+
+int main() {
+    MoveExample obj1(10);
+    MoveExample obj2 = move(obj1);
+    return 0;
+}
+```
+
+**Output:**
+```
+Resource acquired
+Resource moved
+Resource destroyed
+```
+
+---
+
+This markdown file provides a comprehensive overview of C++ from basic to advanced levels. Explore each section to strengthen your understanding of C++.
+
+
 # Mastering Data Structures and Algorithms (DSA)
 
 To tackle Data Structures and Algorithms (DSA) problems effectively, follow these strategies and patterns:
